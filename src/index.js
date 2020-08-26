@@ -23,7 +23,7 @@ function fetchBreeds() {
   fetch(breedUrl)
   .then(resp => resp.json())
   .then(json => {
-    breeds = Object.keys(json.message);
+    breeds = Object.keys(json["message"]);
     breeds.forEach( (breed) => renderBreeds(breed));
 });
 }
