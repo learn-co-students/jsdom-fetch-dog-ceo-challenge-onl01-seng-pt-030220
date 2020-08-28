@@ -56,6 +56,8 @@ function fetchBreeds() {
 // Challenge Three
 function changeColor(e){
     console.log("I am here", e.currentTarget)
+    currentLi = e.currentTarget
+    currentLi.style.color = "blue"
 }
 // document.getElementsByClassName("the-li").addEventListener("click", function(e){
 //     console.log(e)
