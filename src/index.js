@@ -77,50 +77,64 @@ function changeColor(e){
     //     //     //     // document.getElementById("demo").innerHTML = "Hello World";
     //     //    });
     // }
-    function updateBreedList(breeds) {
-        // console.log(breeds)
-        let ul = document.querySelector('#dog-breeds');
-        // ul.querySelectorAll('*').forEach(n => n.remove());
-        removeChildren(ul);
-        breeds.forEach(breed => addBreed(breed));
-      }
+    // function updateBreedList(breeds) {
+    //     // console.log(breeds)
+    //     let ul = document.querySelector('#dog-breeds');
+    //     // ul.querySelectorAll('*').forEach(n => n.remove());
+    //     removeChildren(ul);
+    //     breeds.forEach(breed => addBreed(breed));
+    //   }
 
-      function removeChildren(element) {
-        let child = element.lastElementChild;
-        while (child) {
-          element.removeChild(child);
-          child = element.lastElementChild;
-        }
-      }
+    //   function removeChildren(element) {
+    //     let child = element.lastElementChild;
+    //     while (child) {
+    //       element.removeChild(child);
+    //       child = element.lastElementChild;
+    //     }
+    //   }
       
 
-    function selectBreedsStartingWith(letter) {
-        // const breeds = document.querySelectorAll("li#the-li")
-        console.log(breeds)
-        updateBreedList(breeds.filter(breed => breed.startsWith(letter)));
-      }
+    // function selectBreedsStartingWith(letter) {
+    //     // const breeds = document.querySelectorAll("li#the-li")
+    //     console.log(breeds)
+    //     updateBreedList(breeds.filter(breed => breed.startsWith(letter)));
+    //   }
       
-      function addBreedSelectListener() {
-        let breedDropdown = document.querySelector('#breed-dropdown');
-        breedDropdown.addEventListener('change', function (event) {
-          selectBreedsStartingWith(event.target.value);
-        });
-      }
+    //   function addBreedSelectListener() {
+    //     let breedDropdown = document.querySelector('#breed-dropdown');
+    //     breedDropdown.addEventListener('change', function (event) {
+    //       selectBreedsStartingWith(event.target.value);
+    //     });
+    //   }
 
-      function addBreed(breed) {
-        let ul = document.querySelector('#dog-breeds');
-        let li = document.createElement('li');
-        li.innerText = breed;
-        li.style.cursor = 'pointer';
-        ul.appendChild(li);
-        li.addEventListener('click', updateColor);
-      }
+    //   function addBreed(breed) {
+    //     let ul = document.querySelector('#dog-breeds');
+    //     let li = document.createElement('li');
+    //     li.innerText = breed;
+    //     li.style.cursor = 'pointer';
+    //     ul.appendChild(li);
+    //     li.addEventListener('click', updateColor);
+    //   }
+
+    // MEGS SOLUTION
+    let filter = document.querySelector('#breed-dropdown');
+
+filter.addEventListener('change', () => {
+  let selected = filter.value;
+  let filteredBreeds = breeds.filter(breed => {
+    return breed[0] === selected
+  });
+  let ul = document.querySelector('#dog-breeds');
+  ul.innerHTML = "";
+  filteredBreeds.forEach((el) => renderBreeds(el));
+});
+
 
 
   document.addEventListener('DOMContentLoaded', function() {
     fetchImages()
     fetchBreeds()
-    addBreedSelectListener()
+    
   })
 
 
