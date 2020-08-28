@@ -35,28 +35,32 @@ function fetchBreeds() {
   }
 
   function renderBreeds(images){
-    //   console.log(images["message"])
       let allBreeds = images["message"]
       // had to google how to iterate over a hash
-      console.log(allBreeds)
+    //   console.log(allBreeds)
       for(let breed in allBreeds) {
-        console.log(breed);
+        // console.log(breed);
         const ul = document.querySelector("ul#dog-breeds")
         const li = document.createElement('li')
+        li.className = "the-li"
         li.innerHTML = `${breed}`
+        li.addEventListener("click", function(e){
+            //    console.log(e)
+               changeColor(e)
+            //     // document.getElementById("demo").innerHTML = "Hello World";
+           });
         ul.appendChild(li)
-        // mc.addMarker(marker);
     }
-    //   allBreeds.forEach(breed =>{
-    //     //   console.log(breed)
-    //     //   const ul = document.querySelector("ul#dog-breeds")
-    //     //   const li = document.createElement('li')
-    //     //   li.innerHTML = `${breed}`
-    //     //   ul.appendChild(li)
-    //   })
-
   }
 
+// Challenge Three
+function changeColor(e){
+    console.log("I am here", e.currentTarget)
+}
+// document.getElementsByClassName("the-li").addEventListener("click", function(e){
+//     console.log(e)
+//     // document.getElementById("demo").innerHTML = "Hello World";
+//   });
 
   document.addEventListener('DOMContentLoaded', function() {
     // fetchImages()
