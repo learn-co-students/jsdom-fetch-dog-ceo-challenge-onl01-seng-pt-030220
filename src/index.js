@@ -59,12 +59,29 @@ function changeColor(e){
     currentLi = e.currentTarget
     currentLi.style.color = "blue"
 }
-// document.getElementsByClassName("the-li").addEventListener("click", function(e){
-//     console.log(e)
-//     // document.getElementById("demo").innerHTML = "Hello World";
-//   });
+
+
+
+    function down(){
+        const dropDown = document.querySelector("#breed-dropdown")
+        console.log(dropDown)
+        dropDown.addEventListener("click", function(e){
+            //    console.log(e)
+               console.log(e)
+            //     // document.getElementById("demo").innerHTML = "Hello World";
+           });
+        // dropDown.addEventListener("click", function(e){
+        //     //    console.log(e)
+        //        console.log(e)
+        //     //     // document.getElementById("demo").innerHTML = "Hello World";
+        //    });
+    }
+
 
   document.addEventListener('DOMContentLoaded', function() {
     // fetchImages()
     fetchBreeds()
+    down()
   })
+
+
