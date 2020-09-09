@@ -1,5 +1,5 @@
 # Fetch Dog CEO Challenge
-
+ 
 ## Challenge 1
 
 This repository includes an `index.html` file that loads an `index.js` file.
