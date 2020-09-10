@@ -1,12 +1,27 @@
 console.log('%c HI', 'color: firebrick')
 const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
 const breedUrl = 'https://dog.ceo/api/breeds/list/all'
-//let breedLi = document.getElementById("dog-breeds")
+//let filteredLetter = document.querySelector("#breed-dropdown").value
+let filter = document.querySelector("#breed-dropdown")
+let breedLi = document.getElementById("dog-breeds")
+let breedsArray = []
 
+//filter for dogs by ABC
+filter.addEventListener("change", (e) => {
+    let filteredLetter = (e.target.value)
+    console.log(breedsArray)
+
+    let filteredArray = breedsArray.filter(breed => 
+       breed[0] === filteredLetter
+    )
+    console.log(filteredArray)
+    clearBreeds()
+    getFilteredbreeds(filteredArray)
+})
 
 
 //updating the color when clicking on dog breeds
-document.getElementById("dog-breeds").addEventListener("click", (e) => {
+breedLi.addEventListener("click", (e) => {
     e.target.style.color = "firebrick"
 })
 
@@ -23,9 +38,15 @@ function fetchBreeds(){
 }
 
 function getBreeds(breeds){
-    let breedsArray = Object.keys(breeds)
-
+    breedsArray = Object.keys(breeds)
+    //getFilteredbreeds()
     breedsArray.forEach(breed => {
+        renderBreed(breed)    
+    })
+}
+
+function getFilteredbreeds(breeds){
+    breeds.forEach(breed => {
         renderBreed(breed)    
     })
 }
@@ -37,6 +58,10 @@ function renderBreed(breed){
     ulBreeds.appendChild(li)
 }
 
+function clearBreeds(){
+    const ulBreeds = document.querySelector("#dog-breeds")
+    ulBreeds.innerHTML = ""
+}
 
 //fetching Dog Images
 function fetchDogs(){
