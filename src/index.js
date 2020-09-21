@@ -46,26 +46,19 @@ function changeColor(breed) {
     })
 }
 
-// function filterFunction() {
-//     let dogList = document.getElementById("dog-breeds")
-//     let breedDropDown = document.getElementById("breed-dropdown")
-//     breedDropDown.addEventListener("change", (e) => {
-//         let letter = e.target.value
-//         let filter = breeds.filter(breed => breed.startsWith(letter))
-//         dogList.innerHTML = ""
-//         renderBreeds(filter)
-//     })
-// }
-let dogSelect = document.getElementById("dog-breeds")
-let breedDropDown = document.getElementById("breed-dropdown")
-breedDropDown.addEventListener("change", function(e) {
-    let letter = e.target.value
-    let filter = breeds.filter(breed => breed.startsWith(letter))
-    dogSelect.innerHTML = ""
-    renderBreeds(filter)
-})
+function filterFunction() {
+    let dogList = document.getElementById("dog-breeds")
+    let breedDropDown = document.getElementById("breed-dropdown")
+    breedDropDown.addEventListener('change', function(e) {
+        let letter = e.target.value
+        let filter = breeds.filter(breed => breed.startsWith(letter))
+        dogList.innerHTML = ""
+        renderBreeds(filter)
+    })
+}
 
 document.addEventListener('DOMContentLoaded', function() {
    fetchImages();
-   fetchDogBreeds()
+   fetchDogBreeds();
+   filterFunction();
 })
